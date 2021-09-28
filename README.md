@@ -18,3 +18,6 @@ devices native phone application with the proper phone number ready to be called
   <li>Object Oriented Programming Principles</li>
   <li>Some unit tests with more on the way</li>
 </ul>
+
+![Image of Yaktocat]
+(https://octodex.github.com/images/yaktocat.png)
