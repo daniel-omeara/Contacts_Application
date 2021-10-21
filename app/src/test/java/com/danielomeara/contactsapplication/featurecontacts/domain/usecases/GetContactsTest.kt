@@ -23,14 +23,14 @@ class GetContactsTest {
     @Test
     fun givenContact_whenNameBlank_thenThrowInvalidContactException() {
         runBlocking  {
-            assert(GetContacts(repository).invoke(OrderType.Descending).toList() == contactsListDescending)
+            assert(GetContacts(repository).invoke(OrderType.DESCENDING).toList() == contactsListDescending)
         }
     }
 
     @Test
     fun givenContact_whenNameBlk_thenThrowInvalidContactException() {
         runBlocking  {
-            assert(GetContacts(repository).invoke(OrderType.Ascending).toList() == contactsListAscending)
+            assert(GetContacts(repository).invoke(OrderType.ASCENDING).toList() == contactsListAscending)
         }
     }
 }

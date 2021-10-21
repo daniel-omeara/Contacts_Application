@@ -18,7 +18,7 @@ class DeleteContactTest {
     }
 
     @Test
-    fun givenContact_whenNameBlank_thenThrowInvalidContactException() {
+    fun givenContact_whenValid_thenContactDeleted() {
         runBlocking  {
             assert(DeleteContact(repository).invoke(contact) == 0)
         }
