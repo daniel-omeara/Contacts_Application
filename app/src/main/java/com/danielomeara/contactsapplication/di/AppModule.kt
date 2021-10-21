@@ -2,10 +2,10 @@ package com.danielomeara.contactsapplication.di
 
 import android.app.Application
 import androidx.room.Room
-import com.danielomeara.contactsapplication.feature_contacts.data.data_source.ContactDatabase
-import com.danielomeara.contactsapplication.feature_contacts.data.repository.ContactRepositoryImpl
-import com.danielomeara.contactsapplication.feature_contacts.domain.repository.ContactRepository
-import com.danielomeara.contactsapplication.feature_contacts.domain.use_case.*
+import com.danielomeara.contactsapplication.featurecontacts.data.datasource.ContactDatabase
+import com.danielomeara.contactsapplication.featurecontacts.data.repository.ContactRepositoryImpl
+import com.danielomeara.contactsapplication.featurecontacts.domain.repository.ContactRepository
+import com.danielomeara.contactsapplication.featurecontacts.domain.usecases.*
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -34,14 +34,32 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun provideContactsUseCases(repository: ContactRepository): ContactsUseCases {
-        return ContactsUseCases(
-            getContacts = GetContacts(repository),
-            deleteContact = DeleteContact(repository),
-            addContact = AddContact(repository),
-            getContact = GetContact(repository),
-            formatPhoneNumber = FormatPhoneNumber()
-        )
+    fun provideFormatPhoneNumberUseCase(): FormatPhoneNumber {
+        return FormatPhoneNumber()
+    }
+
+    @Provides
+    @Singleton
+    fun provideGetContactUseCase(repository: ContactRepository): GetContact {
+        return GetContact(repository)
+    }
+
+    @Provides
+    @Singleton
+    fun provideAddContactUseCase(repository: ContactRepository): AddContact {
+        return AddContact(repository)
+    }
+
+    @Provides
+    @Singleton
+    fun provideGetContactsUseCase(repository: ContactRepository): GetContacts {
+        return GetContacts(repository)
+    }
+
+    @Provides
+    @Singleton
+    fun provideDeleteContactUseCase(repository: ContactRepository): DeleteContact {
+        return DeleteContact(repository)
     }
 
 }
